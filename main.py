@@ -41,6 +41,7 @@ while run:
     display.blit(player.image, player.rect)
 
     if player.game_state == -1:
+        display.blit(restart_button.image, restart_button.rect)
         if restart_button.draw():
             for l in lava_group:
                 l.kill()
@@ -48,6 +49,8 @@ while run:
             player = Player(lava_group)
             world = World("lvl_1.json", lava_group)
             player.game_state = 0
+            player.rect.left = TILE_SIZE
+            player.rect.bottom = HEIGHT - TILE_SIZE
 
     pygame.display.flip()
     clock.tick(40)
